@@ -1,0 +1,251 @@
+<!-- DEMO completo estilo Gil Veículos — versão original restaurada + botão Buscar funcional -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neto & Felipe — Carros</title>
+  <meta name="description" content="Demo de site de loja de veículos com busca, estoque, CTA de venda, financiamento, calculadora e contato." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="https://images.freeimages.com/clg/images/25/257603/car-pictogram_f" type="image/x-icon">
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar py-2">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <div class="d-flex align-items-center gap-3">
+        <span><i class="bi bi-geo-alt"></i> Rio de Janeiro — RJ (exemplo)</span>
+        <a href="tel:+5575999999999" class="d-none d-md-inline"><i class="bi bi-telephone"></i> (75) 99999-9999</a>
+        <a href="https://wa.me/5575999999999" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <i class="bi bi-steering-wheel me-2 text-primary fs-4"></i>
+        <span>Neto & Felipe <small class="text-muted">· Car</small></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#estoque">Estoque</a></li>
+          <li class="nav-item"><a class="nav-link" href="#vender">Quero vender</a></li>
+          <li class="nav-item"><a class="nav-link" href="#financiamento">Financiamento</a></li>
+          <li class="nav-item"><a class="nav-link" href="#calculadora">Calculadora</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero + Busca -->
+  <header class="hero py-5">
+    <div class="container py-3">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold">O carro dos seus sonhos</h1>
+          <p class="lead mb-4">Encontre o carro que só a</p>
+          <ul class="list-unstyled small">
+            <li>• Carros dos sonhos</li>
+            <li>• Naves incriveis</li>
+            <li>• E tudo que você sonhou</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="card shadow-lg search-card">
+            <div class="card-body">
+              <h2 class="h5 mb-3">Busque seu próximo veículo</h2>
+              <form id="searchForm" class="row g-3">
+                <div class="col-12">
+                  <input type="text" class="form-control" id="q" placeholder="Palavra‑chave (ex.: Onix, Strada, Caminhão)" />
+                </div>
+                <div class="col-md-6">
+                  <select class="form-select" id="marca">
+                    <option value="">Marca</option>
+                    <option>Marvel</option>
+                    <option>DC</option>
+                    <option>Supernatural</option>
+                    <option>StarWars</option>
+                    <option>Outros</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <select class="form-select" id="cambio">
+                    <option value="">Câmbio</option>
+                    <option>Manual</option>
+                    <option>Automático</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <select class="form-select" id="anoMin">
+                    <option value="">Ano mín.</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <select class="form-select" id="anoMax">
+                    <option value="">Ano máx.</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="preco" class="form-label">Preço máximo: <span id="precoOut">R$ 200.000</span></label>
+                  <input type="range" class="form-range" min="20000" max="300000" step="1000" id="preco" value="200000">
+                </div>
+                <div class="col-12 d-grid">
+                  <button class="btn btn-primary" type="submit"><i class="bi bi-search me-2"></i>Buscar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Estoque -->
+  <section id="estoque" class="py-5 bg-soft">
+    <div class="container">
+      <div class="d-flex align-items-end justify-content-between mb-3">
+        <div>
+          <h2 class="section-title h3 mb-1">Estoque em destaque</h2>
+          <p class="text-secondary mb-0">Resultados <span id="resultsCount">0</span> · atualize os filtros para refinar.</p>
+        </div>
+        <div class="d-none d-md-flex align-items-center gap-2">
+          <label class="text-secondary small">Ordenar</label>
+          <select id="sort" class="form-select form-select-sm">
+            <option value="recent">Mais recentes</option>
+            <option value="lower">Menor preço</option>
+            <option value="higher">Maior preço</option>
+            <option value="year">Ano (mais novo)</option>
+          </select>
+        </div>
+      </div>
+      <div id="grid" class="row g-3"></div>
+      <div class="text-center mt-4">
+        <button id="loadMore" class="btn btn-outline-primary d-none"><i class="bi bi-plus-lg me-2"></i>Carregar mais</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Quero vender -->
+  <section id="vender" class="py-5">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <div class="p-4 p-lg-5 rounded-4 border bg-white shadow-sm">
+            <h2 class="section-title h3">Quer vender seu veículo?</h2>
+            <p class="mb-3">Fazemos avaliação justa e pagamento ágil. Envie os dados e receba uma proposta.</p>
+            <ul class="list-unstyled mb-4">
+              <li><i class="bi bi-check-circle text-success me-2"></i>PIX na hora (exemplo)</li>
+              <li><i class="bi bi-check-circle text-success me-2"></i>Quitamos financiamento, se houver</li>
+              <li><i class="bi bi-check-circle text-success me-2"></i>Buscamos o veículo na sua cidade</li>
+            </ul>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalVender"><i class="bi bi-cash-coin me-2"></i>Quero vender</button>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <img class="img-fluid rounded-4 shadow-sm" src="https://conteudo.imguol.com.br/c/entretenimento/37/2025/07/14/batmovel-do-neymar-1752527374165_v2_1x1.jpg" alt="Avaliação de veículo"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financiamento -->
+  <section id="financiamento" class="py-5 bg-soft">
+    <div class="container">
+      <h2 class="section-title h3 mb-4">Financiamento facilitado</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm"><div class="card-body"><div class="d-flex align-items-center gap-2 mb-2"><i class="bi bi-file-earmark-text fs-4 text-primary"></i><strong>1) Simulação</strong></div><p class="mb-0">Envie renda e entrada desejada para simular parcelas em diversos bancos.</p></div></div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm"><div class="card-body"><div class="d-flex align-items-center gap-2 mb-2"><i class="bi bi-shield-check fs-4 text-primary"></i><strong>2) Aprovação</strong></div><p class="mb-0">Aprovação rápida com documentação digital — sem complicação.</p></div></div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm"><div class="card-body"><div class="d-flex align-items-center gap-2 mb-2"><i class="bi bi-key fs-4 text-primary"></i><strong>3) Retire seu carro</strong></div><p class="mb-0">Veículo revisado e com garantia para você sair dirigindo com segurança.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculadora -->
+  <section id="calculadora" class="py-5">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-6">
+          <h2 class="section-title h3 mb-3">Calculadora de financiamento</h2>
+          <form id="calcForm" class="row g-3">
+            <div class="col-12"><label class="form-label">Preço do veículo</label><div class="input-group"><span class="input-group-text">R$</span><input type="number" class="form-control" id="precoVeiculo" value="90000" min="0" step="100"></div></div>
+            <div class="col-12"><label class="form-label">Entrada</label><div class="input-group"><span class="input-group-text">R$</span><input type="number" class="form-control" id="entrada" value="20000" min="0" step="100"></div><div class="form-text">Valor financiado = Preço − Entrada</div></div>
+            <div class="col-md-6"><label class="form-label">Taxa de juros (ao mês)</label><div class="input-group"><input type="number" class="form-control" id="taxaMes" value="1.69" min="0" step="0.01"><span class="input-group-text">%</span></div></div>
+            <div class="col-md-6"><label class="form-label">Prazo</label><div class="input-group"><input type="number" class="form-control" id="prazoMeses" value="48" min="1" step="1"><span class="input-group-text">meses</span></div></div>
+            <div class="col-12"><label class="form-label">Custos mensais (opcional)</label><div class="input-group"><span class="input-group-text">R$</span><input type="number" class="form-control" id="custosMensais" value="0" min="0" step="10"></div></div>
+            <div class="col-12 d-grid d-sm-block"><button class="btn btn-primary" type="submit"><i class="bi bi-calculator me-2"></i>Calcular</button><button class="btn btn-outline-secondary ms-sm-2 mt-2 mt-sm-0" type="button" id="btnLimpar">Limpar</button></div>
+          </form>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-4 bg-white rounded-4 border shadow-sm h-100">
+            <h3 class="h5 mb-3">Resultado</h3>
+            <div class="row g-3">
+              <div class="col-sm-6"><div class="border rounded-3 p-3 h-100"><div class="small text-secondary">Parcela estimada</div><div class="fs-4 fw-bold" id="outParcela">—</div><div class="small text-secondary">(inclui custos mensais)</div></div></div>
+              <div class="col-sm-6"><div class="border rounded-3 p-3 h-100"><div class="small text-secondary">Valor financiado</div><div class="fs-5 fw-semibold" id="outFinanciado">—</div><div class="small text-secondary">Preço − Entrada</div></div></div>
+              <div class="col-sm-6"><div class="border rounded-3 p-3 h-100"><div class="small text-secondary">Total pago</div><div class="fs-6 fw-semibold" id="outTotal">—</div></div></div>
+              <div class="col-sm-6"><div class="border rounded-3 p-3 h-100"><div class="small text-secondary">Juros totais</div><div class="fs-6 fw-semibold" id="outJuros">—</div></div></div>
+            </div>
+            <hr><p class="small text-secondary mb-0">Fórmula Price (PMT). Resultado ilustrativo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato / Localização -->
+  <section id="contato" class="py-5 bg-soft">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h2 class="section-title h3">Fale com a loja</h2>
+          <form class="row g-3">
+            <div class="col-md-6"><input class="form-control" placeholder="Nome" required></div>
+            <div class="col-md-6"><input class="form-control" placeholder="Telefone/WhatsApp" required></div>
+            <div class="col-12"><input type="email" class="form-control" placeholder="E-mail (opcional)"></div>
+            <div class="col-12"><textarea class="form-control" rows="4" placeholder="Mensagem"></textarea></div>
+            <div class="col-12 d-grid d-sm-block"><button class="btn btn-primary"><i class="bi bi-send me-2"></i>Enviar</button></div>
+          </form>
+          <div class="mt-4 small text-secondary">
+            <div><i class="bi bi-geo"></i> Morro do Dendê — Rio de Janeiro/RJ</div>
+            <div><i class="bi bi-clock"></i> Seg a Sex 8h–18h, Sáb 8h–13h</div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9633.86431453148!2d-1.2106730259950484!3d52.868020003380146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879e7fdc238d091%3A0x1c80d387bdf87dd5!2sGotham%2C%20Nottingham%2C%20Reino%20Unido!5e0!3m2!1spt-BR!2sbr!4v1760149902935!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer + WhatsApp -->
+  <footer class="footer border-top py-4 bg-white">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div class="small">© <span id="year"></span> Gil Veículos — DEMO. Todos os direitos reservados.</div>
+      <div class="d-flex gap-3 small"><a href="#" class="link-secondary">Termos</a><a href="#" class="link-secondary">Privacidade</a></div>
+    </div>
+  </footer>
+  <a class="btn btn-success rounded-circle p-3 floating-whatsapp" href="https://wa.me/5575999999999" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp fs-4"></i></a>
+
+  <!-- Modais -->
+  <div class="modal fade" id="modalDetalhes" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="detalhesTitulo">Detalhes do veículo</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="row g-3"><div class="col-md-6"><img id="detalhesImg" class="img-fluid rounded-3" alt="Veículo"/></div><div class="col-md-6"><div id="detalhesInfo" class="small"></div><hr><a id="detalhesWhats" class="btn btn-success w-100" target="_blank"><i class="bi bi-whatsapp me-2"></i>Chamar no WhatsApp</a></div></div></div></div></div></div>
+  <div class="modal fade" id="modalVender" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Quero vender meu veículo</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><form class="row g-3"><div class="col-12"><input class="form-control" placeholder="Nome" required></div><div class="col-12"><input class="form-control" placeholder="Telefone/WhatsApp" required></div><div class="col-md-7"><input class="form-control" placeholder="Marca/Modelo" required></div><div class="col-md-5"><input class="form-control" placeholder="Ano" required></div><div class="col-12"><input class="form-control" placeholder="Quilometragem"></div><div class="col-12"><textarea class="form-control" rows="3" placeholder="Observações"></textarea></div><div class="col-12 d-grid"><button class="btn btn-success" type="submit">Enviar avaliação</button></div></form></div></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

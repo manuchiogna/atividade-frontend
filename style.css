@@ -1,0 +1,12 @@
+:root{ --brand:#0d6efd; --ink:#111827; }
+body{color:#1f2937}
+.topbar{background:#0b1220;color:#cbd5e1;font-size:.9rem}
+.topbar a{color:#cbd5e1;text-decoration:none}
+.navbar-brand span{font-weight:700;letter-spacing:.3px}
+.hero{background:linear-gradient(180deg,rgba(13,110,253,.15),rgba(13,110,253,.05));color:#0b1220}
+.hero .search-card{backdrop-filter:blur(6px);background:rgba(255,255,255,.92);border:1px solid rgba(0,0,0,.06)}
+.vehicle-card img{object-fit:cover;height:180px}
+.vehicle-badges .badge{font-weight:500}
+.bg-soft{background:#f7f8fb}
+.section-title{font-weight:800;letter-spacing:.2px}
+.floating-whatsapp{position:fixed;right:16px;bottom:16px;z-index:1080;box-shadow:0 8px 24px rgba(0,0,0,.18)}
