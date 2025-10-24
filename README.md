@@ -1,8 +1,8 @@
-# 🚗 Neto & Felipe — Carros
+# 🚗 Garagem Prime — Carros
 
-**Projeto desenvolvido por Nelson Oliveira Neto e Felipe Mendes para a disciplina de Programação Front End do professor Cristiano Mendes Chagas na faculdade Unifan.**
+**Projeto desenvolvido por Nelson Oliveira Neto, Felipe Mendes, Emanuelle Chiogna e Thiago Miranda para a disciplina de Programação Front End do professor Cristiano Mendes Chagas na faculdade Unifan.**
 
-Bem-vindo ao projeto **Neto & Felipe — Carros**, uma landing page completa para uma concessionária fictícia. O objetivo é apresentar estoque, estimular leads de financiamento e facilitar o contato com a loja em um único lugar. Este README traz orientações detalhadas sobre a estrutura, como executar o projeto e como estender o código existente. Aproveite! 😄
+Bem-vindo ao projeto **Garagem Prime — Carros**, uma landing page completa para uma concessionária fictícia. O objetivo é apresentar estoque, estimular leads de financiamento e facilitar o contato com a loja em um único lugar. Este README traz orientações detalhadas sobre a estrutura, como executar o projeto e como estender o código existente. Aproveite! 😄
 
 ---
 
